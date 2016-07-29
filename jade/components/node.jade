@@ -1,0 +1,7 @@
+.node(@mousedown="mousedown" @mousemove="mousemove" @mouseup="mouseup" ":style"="inline")
+  .block {{ random }}
+  .block {{ message }}
+  component(":is"="componentType")
+  .io--in("v-el:in")
+  .io--out("v-el:out")
+    .connector

@@ -1,10 +1,7 @@
 doctype html
 html
   head
-    include partials/meta
+    block head
   body
-    block header
     block content
-    block modal
-      
-  include partials/footer
+  script(src="js/bundle.js")

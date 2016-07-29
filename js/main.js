@@ -1,21 +1,12 @@
-var Vue = require('vue'),
-    http = require('vue-resource');
+import Vue from 'vue'; 
+import store from './data/store'
 
-import Alert from './components/alert.js';
+import Node from './components/node';
 
-Vue.use(http);
-
-var App = new Vue({
-    el: 'body',
-    components: [
-        Alert
-    ],
+const app = new Vue({
+    el: '#root',
+    components: [Node],
     data: {
-        test: 'Whasup',
-        collection: [
-            { body: '1 Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-            { body: '2 Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-            { body: '3 Lorem ipsum dolor sit amet, consectetur adipiscing elit.' }
-        ]
+        store
     }
 })
