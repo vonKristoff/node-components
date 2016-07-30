@@ -1,15 +1,8 @@
 #component-nodes
 
-
-This boiler environment is has been built with the idea of using **Vue.js** as a component model. Build a component and ship it as an iframe. This is an alternative to using the quite better **vue-cli** taking a similar boilerplate approach and utilising the single file concept of **Vueify**.. but use that, and you'll never learn knowing.
-
-Tricks included:
-
-* Browserify
-* Vue
-* Vue-router
-* Vue-resource
-* ES6 (currently disabled)
+###TODO
+* Update Root data model once target has been dropped, for the case of switching children.
+* Global `$vm` **IO** for child nodes to inherit from other Global Nodes, and not just from their repsective parents. 
 
 **Project Enviroments**
 
