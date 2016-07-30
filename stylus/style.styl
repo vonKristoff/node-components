@@ -7,21 +7,39 @@ global-reset()
 
 html
   font-size 18px
+  font-family: monospace
 
 #root
+  color #564747
   position relative
 
+.drag_area
+  padding 1em
+  float left
+  width 50%
+  height 100vh
+.data
+  font-size: .7em
+  padding: 2em
+  background: #efefef;
+  float left
+  width 50%
+  height 100vh
 .node
+  &:hover
+    background: yellow
   background white
   padding 2em
-  margin 1em
+  // margin 1em
   border 1px solid violet
   border-radius 1em
   max-width 300px
   text-align center
-  position absolute
+  position relative
+  cursor: pointer
   .block
     pointer-events none
+    user-select none
   .io--in
     position absolute
     width 1em
@@ -41,7 +59,7 @@ html
     border-radius 50%
     background-color white
     .connector
-      position absolute
+      // position absolute
       top 0.5em
       left 0.5em
       width 200px

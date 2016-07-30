@@ -1,0 +1,170 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+body {
+  line-height: 1;
+  color: #000;
+  background: #fff;
+}
+ol,
+ul {
+  list-style: none;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+caption,
+th,
+td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+a img {
+  border: none;
+}
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html {
+  font-size: 18px;
+  font-family: monospace;
+}
+#root {
+  color: #564747;
+  position: relative;
+}
+.drag_area {
+  padding: 1em;
+  float: left;
+  width: 50%;
+  height: 100vh;
+}
+.data {
+  font-size: 0.7em;
+  padding: 2em;
+  background: #efefef;
+  float: left;
+  width: 50%;
+  height: 100vh;
+}
+.node {
+  background: #fff;
+  padding: 2em;
+  border: 1px solid #ee82ee;
+  -webkit-border-radius: 1em;
+  border-radius: 1em;
+  max-width: 300px;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+}
+.node:hover {
+  background: #ff0;
+}
+.node .block {
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.node .io--in {
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  border: 1px solid #ee82ee;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background-color: #fff;
+  left: -0.5em;
+  top: calc(50% - 0.5em);
+}
+.node .io--out {
+  right: -0.5em;
+  top: calc(50% - 0.5em);
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  border: 1px solid #ee82ee;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background-color: #fff;
+}
+.node .io--out .connector {
+  top: 0.5em;
+  left: 0.5em;
+  width: 200px;
+  height: 50px;
+  border: 1px solid #9acd32;
+}

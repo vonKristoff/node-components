@@ -5,3 +5,5 @@
   .io--in("v-el:in")
   .io--out("v-el:out")
     .connector
+  .list(v-if="isNested")
+    node(v-for="model in model.children" ":model"="model" ":m"="mouse")

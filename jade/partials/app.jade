@@ -1,3 +1,10 @@
-#root
-  node(type="type-a" id="A" tgt="B")
-  node(type="type-b" id="B" start="500")
+#root(@mousemove="mousemove" @mouseup="mouseup")
+  // node(type="type-a" id="A" tgt="B")
+  // node(type="type-b" id="B" start="500")
+  .data
+    p hover: {{ onover }}
+    p selected: {{ target }}
+    pre {{ store | json }}
+  .drag_area
+    node(v-for="item in store" ":model"="item")
+  

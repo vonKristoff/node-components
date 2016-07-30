@@ -7,7 +7,8 @@ export default {
     name: 'node',
     template: Template,
     components: [TypeA, TypeB],
-    props: ['type', 'id', 'start', 'tgt'],
+    inherit: true,
+    props: ['type', 'id', 'start', 'tgt', 'model', 'm'],
     data() {
         return {
             io: {
@@ -29,7 +30,17 @@ export default {
     },
     computed: {
         inline() {
-            return `transform: translate(${this.position.x}px,${this.position.y}px);`
+            if(this.dragging) {
+                this.position.x = this.m.x - this.mouse.sx
+                this.position.y = this.m.y - this.mouse.sy
+                return `transform: translate(${this.position.x}px,${this.position.y}px); position: absolute;`
+            } else {
+                return `transform: translate(${this.position.x}px,${this.position.y}px);`
+            }
+            
+        },
+        isNested() {
+            return this.model.children && this.model.children.length
         }
     },
     methods: {
@@ -37,8 +48,8 @@ export default {
             console.log(data);
         },
         mousedown(e) {
-            this.mouse.sx = e.clientX
-            this.mouse.sy = e.clientY
+            this.mouse.sx = e.clientX - this.$el.getBoundingClientRect().left
+            this.mouse.sy = e.clientY - this.$el.getBoundingClientRect().top /2
             this.dragging = true;
         },
         mouseup(e) {
@@ -47,10 +58,9 @@ export default {
             this.$emit('snap', { tgt: this.id, box: this.$el.getBoundingClientRect() })
         },
         mousemove(e) {
-            if(this.dragging) {
-                this.position.x = e.clientX - this.mouse.sx
-                this.position.y = e.clientY - this.mouse.sy
-            }
+            // if(this.dragging) {
+            //    
+            // }
         }
     },
     ready() {
