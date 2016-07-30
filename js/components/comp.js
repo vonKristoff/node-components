@@ -11,6 +11,7 @@ export default {
     props: ['model'],
     data() {
         return {
+            random: ~~(Math.random()*10),
             io: {
                 parent: null,
                 child: null

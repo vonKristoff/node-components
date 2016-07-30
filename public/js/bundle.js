@@ -18,6 +18,7 @@ module.exports = {
     props: ["model"],
     data: function data() {
         return {
+            random: ~ ~(Math.random() * 10),
             io: {
                 parent: null,
                 child: null
@@ -44,8 +45,8 @@ module.exports = {
     methods: {
         mousedown: function mousedown(vm, e) {
             this.$dispatch("tgt", vm);
-            this.offset.x = e.clientX - this.position.x; //vm.$el.getBoundingClientRect().left + e.clientX;
-            this.offset.y = e.clientY - this.position.y; //vm.$el.getBoundingClientRect().top + e.clientY;
+            this.offset.x = e.clientX - this.position.x;
+            this.offset.y = e.clientY - this.position.y;
             this.dragging = true;
         },
         mouseup: function mouseup() {
@@ -139,11 +140,19 @@ var app = new Vue({
             _this.target = vm.model.name;
             _this.dragee = vm;
         });
+        console.log(this.store.find(function (item) {
+            return item.name == "root";
+        }));
+        setTimeout(function () {
+            _this.store.sort(function (a, b) {
+                return a.name.length > b.name.length ? -1 : 1;
+            });
+        }, 1500);
     }
 });
 
 },{"./components/comp":1,"./data/store":2,"vue":6}],4:[function(require,module,exports){
-module.exports = "<div :style=\"inline\" @mousedown.stop=\"mousedown(this, $event)\" @mouseup.stop=\"mouseup\" @mouseover.stop=\"mouseover(this, $event)\" class=\"node\"><div class=\"block\">{{ model.name }}</div><div v-el:in=\"v-el:in\" class=\"io--in\"></div><div v-el:out=\"v-el:out\" class=\"io--out\"></div><div class=\"children\"><node v-for=\"item in model.children\" :model=\"item\"></node></div></div>";
+module.exports = "<div :style=\"inline\" @mousedown.stop=\"mousedown(this, $event)\" @mouseup.stop=\"mouseup\" @mouseover.stop=\"mouseover(this, $event)\" class=\"node\"><div class=\"block\">{{ model.name }}</div><div class=\"block\">{{ random }}</div><div v-el:in=\"v-el:in\" class=\"io--in\"></div><div v-el:out=\"v-el:out\" class=\"io--out\"></div><div class=\"children\"><node v-for=\"item in model.children\" :model=\"item\"></node></div></div>";
 
 },{}],5:[function(require,module,exports){
 // shim for using process in browser

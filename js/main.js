@@ -33,5 +33,11 @@ const app = new Vue({
             this.target = vm.model.name
             this.dragee = vm;
         })
+        console.log(this.store.find(item => item.name == 'root'));
+        setTimeout(() => {
+            this.store.sort((a,b) => {
+                return a.name.length > b.name.length ? -1 : 1;
+            })
+        },1500);
     }
 })
