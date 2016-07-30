@@ -1,7 +1,10 @@
 .node(":style"="inline"
       @mousedown.stop="mousedown(this, $event)" 
       @mouseup.stop="mouseup" 
-      @mouseover.stop="mouseover(this, $event)"    
+      @mouseover.stop="mouseover(this, $event)"
+      ":class"="{'active': dragging}"
+      draggable="true"
+      @dragover.stop="dragover(this)"
   )
   //-@mousemove.stop="mousemove(this, $event)"
   .block {{ model.name }}

@@ -48,13 +48,16 @@ module.exports = {
             this.offset.x = e.clientX - this.position.x;
             this.offset.y = e.clientY - this.position.y;
             this.dragging = true;
+            console.log(vm);
         },
         mouseup: function mouseup() {
             this.dragging = false;
         },
         mouseover: function mouseover(vm, e) {
             this.$dispatch("over", vm);
-            console.log(vm.$el.getBoundingClientRect(), e.clientX);
+        },
+        dragover: function dragover(vm) {
+            console.log(vm.model.name);
         },
         drag: function drag(e) {
             if (this.dragging) {
@@ -64,12 +67,13 @@ module.exports = {
             // console.log(vm.model.name, e.clientX, vm.$root.$data);
         }
     },
-    ready: function ready() {
-        console.log(this.model.name, this.model.children.length);
-    }
+    ready: function ready() {}
 };
 
 // return this.model.children.length
+// console.log(vm.$el.getBoundingClientRect(), e.clientX);
+
+// console.log(this.model.name, this.model.children.length);
 
 },{"../templates/comp.html":4,"vue":6}],2:[function(require,module,exports){
 "use strict";
@@ -123,8 +127,13 @@ var app = new Vue({
                 this.dragee.drag(e);
             }
         },
+        mo: function mo(e) {
+            console.log(e.target);
+        },
         mouseup: function mouseup(e) {
             if (this.dragee && this.dragee.dragging) {
+                console.log(this.dragee);
+                // this.onover.children.push(this.dragee.model)
                 this.dragee.dragging = false;
                 this.dragee = false;
             }
@@ -134,6 +143,7 @@ var app = new Vue({
         var _this = this;
 
         this.$on("over", function (vm) {
+            // this.onover = vm.model
             _this.onover = vm.model.name;
         });
         this.$on("tgt", function (vm) {
@@ -152,7 +162,7 @@ var app = new Vue({
 });
 
 },{"./components/comp":1,"./data/store":2,"vue":6}],4:[function(require,module,exports){
-module.exports = "<div :style=\"inline\" @mousedown.stop=\"mousedown(this, $event)\" @mouseup.stop=\"mouseup\" @mouseover.stop=\"mouseover(this, $event)\" class=\"node\"><div class=\"block\">{{ model.name }}</div><div class=\"block\">{{ random }}</div><div v-el:in=\"v-el:in\" class=\"io--in\"></div><div v-el:out=\"v-el:out\" class=\"io--out\"></div><div class=\"children\"><node v-for=\"item in model.children\" :model=\"item\"></node></div></div>";
+module.exports = "<div :style=\"inline\" @mousedown.stop=\"mousedown(this, $event)\" @mouseup.stop=\"mouseup\" @mouseover.stop=\"mouseover(this, $event)\" :class=\"{'active': dragging}\" draggable=\"true\" @dragover.stop=\"dragover(this)\" class=\"node\"><div class=\"block\">{{ model.name }}</div><div class=\"block\">{{ random }}</div><div v-el:in=\"v-el:in\" class=\"io--in\"></div><div v-el:out=\"v-el:out\" class=\"io--out\"></div><div class=\"children\"><node v-for=\"item in model.children\" :model=\"item\"></node></div></div>";
 
 },{}],5:[function(require,module,exports){
 // shim for using process in browser

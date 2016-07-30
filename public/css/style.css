@@ -121,6 +121,7 @@ html {
 .node {
   background: #fff;
   padding: 2em;
+  width: 300px;
   border: 1px solid #ee82ee;
   -webkit-border-radius: 1em;
   border-radius: 1em;
@@ -131,6 +132,9 @@ html {
 }
 .node:hover {
   background: #ff0;
+}
+.node.active {
+  background: #0ff;
 }
 .node .block {
   pointer-events: none;

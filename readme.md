@@ -1,5 +1,9 @@
 #component-nodes
 
+Use the HTML5 drag n drop directive. Otherwise nesting components due to z-indexing is ultra hard with the visual nature intended for this type of UI transaction.
+
+**nb** Once drag start has been activated and the clone has been applied, use `$remove()` and update the data model with standard Array methods. 
+
 ###TODO
 * Update Root data model once target has been dropped, for the case of switching children.
 * Global `$vm` **IO** for child nodes to inherit from other Global Nodes, and not just from their repsective parents. 

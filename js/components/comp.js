@@ -43,13 +43,17 @@ export default {
             this.offset.x = e.clientX - this.position.x
             this.offset.y = e.clientY - this.position.y
             this.dragging = true;
+            console.log(vm);
         },
         mouseup() {
             this.dragging = false;
         },
         mouseover(vm, e) {
             this.$dispatch('over', vm)
-            console.log(vm.$el.getBoundingClientRect(), e.clientX);
+            // console.log(vm.$el.getBoundingClientRect(), e.clientX);
+        },
+        dragover(vm){
+            console.log(vm.model.name);
         },
         drag(e) {
             if(this.dragging) {
@@ -60,6 +64,6 @@ export default {
         }
     },
     ready() {     
-        console.log(this.model.name, this.model.children.length);
+        // console.log(this.model.name, this.model.children.length);
     }
 }

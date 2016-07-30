@@ -18,15 +18,22 @@ const app = new Vue({
                 this.dragee.drag(e);
             }
         },
+        mo(e){
+            console.log(e.target);
+        },
         mouseup(e) {
             if(this.dragee && this.dragee.dragging) {
+                console.log(this.dragee);
+                // this.onover.children.push(this.dragee.model)
                 this.dragee.dragging = false;
                 this.dragee = false;
+                
             }
         }
     },
     ready(){
         this.$on('over', (vm) => {
+            // this.onover = vm.model
             this.onover = vm.model.name
         })
         this.$on('tgt', (vm) => {
