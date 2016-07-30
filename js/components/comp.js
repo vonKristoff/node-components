@@ -39,8 +39,8 @@ export default {
     methods: {
         mousedown(vm, e) {
             this.$dispatch('tgt', vm)
-            this.offset.x = e.clientX - this.position.x//vm.$el.getBoundingClientRect().left + e.clientX;
-            this.offset.y = e.clientY - this.position.y//vm.$el.getBoundingClientRect().top + e.clientY;
+            this.offset.x = e.clientX - this.position.x
+            this.offset.y = e.clientY - this.position.y
             this.dragging = true;
         },
         mouseup() {
